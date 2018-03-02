@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call H
+                istory Service : Find call history by time period</string>
+		<key>ServiceName</key>
+		<string>Find previous week call history</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/findbyperiod</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Find and update call history</string>
+		<key>ServiceName</key>
+		<string>Find and update new call history</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/findnewer</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Update read status by id</string>
+		<key>ServiceName</key>
+		<string>Update read status</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/updateread</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Update flag state by id</string>
+		<key>ServiceName</key>
+		<string>Update flag state</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/updatestate</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Get Number of Unread message</string>
+		<key>ServiceName</key>
+		<string>Get Number of unread message</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/numunread</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Mark all as read</string>
+		<key>ServiceName</key>
+		<string>Mark all as read</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/allread</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Find call history before specific date</string>
+		<key>ServiceName</key>
+		<string>Find before timestamp</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/findbeforetimestamp</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Submit Callnote quality feedback</string>
+		<key>ServiceName</key>
+		<string>Submit Callnote Quality Feedback</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/feedback</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Find call history by identifier</string>
+		<key>ServiceName</key>
+		<string>Find Call History by identifier</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/getcallnotedetail</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Find New Messag Entry based on time (new)</string>
+		<key>ServiceName</key>
+		<string>Find New Message Entry</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/findnewermessageentry</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Find Meesage Entry before specific date</string>
+		<key>ServiceName</key>
+		<string>Find Message Entry before specific date</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/findmessageentrybeforetimestamp</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Find Message Entry by identifier</string>
+		<key>ServiceName</key>
+		<string>Find Message Entry by identifier</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/getmessageentry</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Get Number of Unread Message Entry</string>
+		<key>ServiceName</key>
+		<string>Get Number of unread Message Entry</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/numunreadmessageentry</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Update message entry read status by id</string>
+		<key>ServiceName</key>
+		<string>Update Message Entry read status</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/updatemessageentryread</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Update message entry flag state by id</string>
+		<key>ServiceName</key>
+		<string>Update Message Entry flag state</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/updatemessageentrystate</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Download Attachment Documents</string>
+		<key>ServiceName</key>
+		<string>Download Attachment</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/downloadattachment</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Mark all Message Entry as read</string>
+		<key>ServiceName</key>
+		<string>Mark all Message Entry as read</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/allmessageentryread</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Update Message Entry Hide</string>
+		<key>ServiceName</key>
+		<string>Update Message Entry Hide</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/updatemessageentryhide</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Update Message Entry Delete</string>
+		<key>ServiceName</key>
+		<string>Update Message Entry Delete</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/updatemessageentrydelete</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Find Hide Meesage Entry before specific date</string>
+		<key>ServiceName</key>
+		<string>Find Hide Meesage Entry</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/findhidemessageentrybeforetimestamp</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Call History Service : Empty Message Entry Trash</string>
+		<key>ServiceName</key>
+		<string>Empty Message Entry Trash</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/ch/emptymessageentrytrash</string>
+	</dict>
+</array>
+</plist>

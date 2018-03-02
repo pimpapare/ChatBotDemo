@@ -1,0 +1,6 @@
+framework module CoreAPIs {
+  umbrella header "CoreAPIs-umbrella.h"
+
+  export *
+  module * { export * }
+}

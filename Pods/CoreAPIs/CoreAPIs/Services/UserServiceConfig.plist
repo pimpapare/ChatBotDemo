@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Authentication Service : Login</string>
+		<key>ServiceName</key>
+		<string>ebuero Login</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/login</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Authentication Service : Logout</string>
+		<key>ServiceName</key>
+		<string>ebuero Logout</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/logout</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Authentication Service : Active/Inactive</string>
+		<key>ServiceName</key>
+		<string>ebuero Active/Inactive</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/customer/accountstart</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero block outdate version Service : Block outdated app version</string>
+		<key>ServiceName</key>
+		<string>ebuero Block outdated app version</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/app/minversion?os=ios</string>
+	</dict>
+</array>
+</plist>

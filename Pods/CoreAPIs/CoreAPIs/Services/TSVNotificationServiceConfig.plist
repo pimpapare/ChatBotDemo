@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>Notification Service : Register</string>
+		<key>ServiceName</key>
+		<string>Register for remote notification</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/push/i/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Notification Service : Unregister</string>
+		<key>ServiceName</key>
+		<string>Unregister for remote notification</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/push/i/</string>
+	</dict>
+</array>
+</plist>

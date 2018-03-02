@@ -10,11 +10,16 @@ import UIKit
 import Material
 import MessageKit
 
+protocol MessageKitProtocol {
+    
+}
+
 class MessageKitViewController: MessagesViewController {
     
     let refreshControl = UIRefreshControl()
     
     var messageList: [MockMessage] = []
+    var messageKitViewModel:MessageKitViewModel!
     
     var isTyping = false
     
@@ -42,6 +47,8 @@ class MessageKitViewController: MessagesViewController {
     
     func prepareAppearance() {
 
+        messageKitViewModel = MessageKitViewModel(view: self, viewControllerModel: MessageKitModel())
+        
         let messagesToFetch = UserDefaults.standard.mockMessagesCount()
         
         DispatchQueue.global(qos: .userInitiated).async {
@@ -109,7 +116,6 @@ class MessageKitViewController: MessagesViewController {
             messageInputBar.backgroundColor = messageInputBar.backgroundView.backgroundColor
             
         }
-        
     }
     
     @objc func loadMoreMessages() {

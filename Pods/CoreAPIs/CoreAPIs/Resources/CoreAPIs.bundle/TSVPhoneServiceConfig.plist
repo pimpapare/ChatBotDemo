@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>Phone Service : GET Account Info </string>
+		<key>ServiceName</key>
+		<string>GET Account Info</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/phoneservice/v1/accountinfo</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Find all the reachabilities for the given phone service</string>
+		<key>ServiceName</key>
+		<string>Find all the reachabilities for the given phone service</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/phoneservice/v1/reachabilities/{phoneServiceId}</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Find all the reachabilities for the given phone service</string>
+		<key>ServiceName</key>
+		<string>Find all the reachabilities for the given phone service</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/phoneservice/v1/reachabilities/{phoneServiceId}/{name}</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Find all the reachabilities for the given phone service with secretary number</string>
+		<key>ServiceName</key>
+		<string>Find all the reachabilities for the given phone service with secretary number</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/phoneservice/v1/forwarding/{vorwahl}/{prefix}/{suffix}</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Find all the reachabilities for the given phone service with secretary number</string>
+		<key>ServiceName</key>
+		<string>Find all the reachabilities for the given phone service with secretary number</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/phoneservice/v1/forwarding/{vorwahl}/{prefix}/{suffix}/{count}/{direction}</string>
+	</dict>
+</array>
+</plist>

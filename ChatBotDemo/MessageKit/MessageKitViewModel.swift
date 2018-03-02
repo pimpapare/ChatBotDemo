@@ -10,4 +10,13 @@ import UIKit
 
 class MessageKitViewModel: NSObject {
 
+    var viewInterfaceProtocol:MessageKitViewController!
+    var modelProtocol:MessageKitProtocol!
+    
+    var model:MessageKitModel = MessageKitModel()
+
+    required init(view:MessageKitViewController, viewControllerModel:MessageKitProtocol) {
+        self.viewInterfaceProtocol = view
+        self.modelProtocol = viewControllerModel
+    }
 }

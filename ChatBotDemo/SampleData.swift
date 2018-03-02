@@ -66,7 +66,7 @@ final class SampleData {
         return steven
     }
 
-    let messageImages: [UIImage] = [#imageLiteral(resourceName: "Dan-Leonard"), #imageLiteral(resourceName: "Tim-Cook"), #imageLiteral(resourceName: "Steve-Jobs")]
+    let messageImages: [String] = ["ic_holiday_3", "ic_holiday_4", "ic_holiday_5"]
 
     var now = Date()
 
@@ -160,10 +160,12 @@ final class SampleData {
             let attributedText = attributedString(with: messageTextValues[randomNumberText])
             return MockMessage(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date)
         case "Photo":
-            let image = messageImages[randomNumberImage]
+            let imageName = messageImages[randomNumberImage]
+            let image:UIImage = UIImage(named:imageName)!
             return MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
         case "Video":
-            let image = messageImages[randomNumberImage]
+            let imageName = messageImages[randomNumberImage]
+            let image:UIImage = UIImage(named:imageName)!
             return MockMessage(thumbnail: image, sender: sender, messageId: uniqueID, date: date)
         case "Location":
             return MockMessage(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date)
@@ -185,13 +187,13 @@ final class SampleData {
     func getAvatarFor(sender: Sender) -> Avatar {
         switch sender {
         case dan:
-            return Avatar(image: #imageLiteral(resourceName: "Dan-Leonard"), initials: "DL")
+            return Avatar(image: UIImage(named:"ic_holiday_3"), initials: "DL")
         case steven:
             return Avatar(initials: "S")
         case jobs:
-            return Avatar(image: #imageLiteral(resourceName: "Steve-Jobs"), initials: "SJ")
+            return Avatar(image: UIImage(named:"ic_holiday_4"), initials: "SJ")
         case cook:
-            return Avatar(image: #imageLiteral(resourceName: "Tim-Cook"))
+            return Avatar(image: UIImage(named:"ic_holiday_5"))
         default:
             return Avatar()
         }

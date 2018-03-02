@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Appointment Service : Find appointment by time period</string>
+		<key>ServiceName</key>
+		<string>Find Appointment</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/findbyperiod</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Appointment Service : Create or update Appointment</string>
+		<key>ServiceName</key>
+		<string>Create or update Appointment</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/saveorupdate/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Appointment Service : Delete Appointment</string>
+		<key>ServiceName</key>
+		<string>Delete Appointment</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/delete/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Appointment Service : Create and Delete conflict Appointment</string>
+		<key>ServiceName</key>
+		<string>Create and Delete conflict Appointment</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/saveorupdate/do/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Profile Service : Get all Profile</string>
+		<key>ServiceName</key>
+		<string>Find Profile</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/profiles/findall</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Profile Service : Create or update Profile</string>
+		<key>ServiceName</key>
+		<string>Create or update Profile</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/profiles/saveorupdate/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Profile Service : Delete Profile</string>
+		<key>ServiceName</key>
+		<string>Delete Profile</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/profiles/delete/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Standard Call Handling Service : Retrieve Standard Call Handling</string>
+		<key>ServiceName</key>
+		<string>Get Standard Call Handling</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/dch/find</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Standard Call Handling Service  : Update Standard Call Handling</string>
+		<key>ServiceName</key>
+		<string>Update Standard Call Handling</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/dch/saveorupdate/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Appointment Service : Find future appointment</string>
+		<key>ServiceName</key>
+		<string>Find future appointment</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/findupcoming</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Appointment Service : Find past appointments from specific time</string>
+		<key>ServiceName</key>
+		<string>Find past appointments</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/findbeforetimestamp</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Appointment Service : Find future appointments from specific time</string>
+		<key>ServiceName</key>
+		<string>Find future appointments</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/dp/findaftertimestamp</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Excuse Message Service : Find pre-defined excuse messages</string>
+		<key>ServiceName</key>
+		<string>Find Excuse messages</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/agenda/callhandlings/all</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Adaptive Save</string>
+		<key>ServiceName</key>
+		<string>Answering message</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/agenda/adaptivesave</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero save or update appointment</string>
+		<key>ServiceName</key>
+		<string>Save or Update appointment</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/agenda/</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,22 @@
+{
+  "name": "CoreAPIs",
+  "version": "0.0.3",
+  "summary": "CoreAPIs for office24",
+  "homepage": "http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git",
+  "license": "MIT",
+  "authors": {
+    "pimpaporn chaichompoo": "p.pimpapare@gmail.com"
+  },
+  "source": {
+    "git": "http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git",
+    "tag": "0.0.3"
+  },
+  "source_files": "CoreAPIs/**/*.{swift,plist,bundle}",
+  "resources": "CoreAPIs/**/*.{xcassets,storyboard,xib,xcdatamodeld,lproj,plist,bundle}",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}

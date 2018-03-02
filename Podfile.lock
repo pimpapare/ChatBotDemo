@@ -1,3 +1,42 @@
-PODFILE CHECKSUM: de1f2926cce500b85b4debea1407475158995a8f
+PODS:
+  - CoreAPIs (0.0.3)
+  - Material (2.13.5):
+    - Material/Core (= 2.13.5)
+  - Material/Core (2.13.5):
+    - Motion (~> 1.3.0)
+  - MessageKit (0.13.1)
+  - Motion (1.3.4):
+    - Motion/Core (= 1.3.4)
+  - Motion/Core (1.3.4)
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
+
+DEPENDENCIES:
+  - CoreAPIs (from `http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git`)
+  - Material
+  - MessageKit
+  - RealmSwift (~> 2.2)
+
+EXTERNAL SOURCES:
+  CoreAPIs:
+    :git: http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git
+
+CHECKOUT OPTIONS:
+  CoreAPIs:
+    :commit: 3d444a69e38a8afa11dd7b135709bcf359abf310
+    :git: http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git
+
+SPEC CHECKSUMS:
+  CoreAPIs: e2e65c7fdf460ff00615938e83da420a388a4708
+  Material: ced3fd11882147b135f897ca20227174bb104ad0
+  MessageKit: fc74d71d9b05385138d47b3a4b7beef5c687daf1
+  Motion: 85b8777db2e68801c03a5c629e918c35dd184c8d
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
+
+PODFILE CHECKSUM: b5e1dae892fea57eef581a459e26acde7d67a41a
 
 COCOAPODS: 1.2.1

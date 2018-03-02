@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>Application Feedback : Service Request</string>
+		<key>ServiceName</key>
+		<string>Application Feedback #1</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/feedback/1/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Application Feedback : Product Request</string>
+		<key>ServiceName</key>
+		<string>Application Feedback #2</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/feedback/2/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Application Feedback : Improvement</string>
+		<key>ServiceName</key>
+		<string>Application Feedback #3</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/feedback/3/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Application Feedback : Report an error</string>
+		<key>ServiceName</key>
+		<string>Application Feedback #4</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/feedback/4/</string>
+	</dict>
+</array>
+</plist>

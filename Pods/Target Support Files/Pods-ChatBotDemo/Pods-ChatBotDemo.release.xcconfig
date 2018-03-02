@@ -1,5 +1,10 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/CoreAPIs" "$PODS_CONFIGURATION_BUILD_DIR/Material" "$PODS_CONFIGURATION_BUILD_DIR/MessageKit" "$PODS_CONFIGURATION_BUILD_DIR/Motion" "$PODS_CONFIGURATION_BUILD_DIR/Realm" "$PODS_CONFIGURATION_BUILD_DIR/RealmSwift"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/CoreAPIs/CoreAPIs.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Material/Material.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MessageKit/MessageKit.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Motion/Motion.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Realm/Realm.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/RealmSwift/RealmSwift.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -ObjC -framework "CoreAPIs" -framework "Material" -framework "MessageKit" -framework "Motion" -framework "Realm" -framework "RealmSwift"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

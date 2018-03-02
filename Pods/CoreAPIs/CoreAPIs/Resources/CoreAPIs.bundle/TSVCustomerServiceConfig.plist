@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Reroute Call: Get user&apos;s ebuero number</string>
+		<key>ServiceName</key>
+		<string>Get user&apos;s ebuero number</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/customer/ccnumbers</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>ebuero Answering Message Service : Answering message</string>
+		<key>ServiceName</key>
+		<string>Answering message</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/customer/answeringtext</string>
+	</dict>
+    <dict>
+        <key>Description</key>
+        <string>Call Center RAV number Service : Call Center RAV number</string>
+        <key>ServiceName</key>
+        <string>Call Center RAV number</string>
+        <key>ServicePath</key>
+        <string>http://devweb01.project-hosting.de/webservices-10/rs/customer/ravccnumbers</string>
+    </dict>
+    <dict>
+        <key>Description</key>
+        <string>Customer company info Service : Customer company info</string>
+        <key>ServiceName</key>
+        <string>Customer company info</string>
+        <key>ServicePath</key>
+        <string>http://devweb01.project-hosting.de/webservices-10/rs/customer/info</string>
+    </dict>
+</array>
+</plist>

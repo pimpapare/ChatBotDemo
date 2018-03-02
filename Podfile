@@ -5,7 +5,11 @@ target 'ChatBotDemo' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for ChatBotDemo
+  pod 'CoreAPIs', :git => 'http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git'
+  pod 'MessageKit'
+  pod 'RealmSwift', '~> 2.2'
+  pod 'Material'
+  
 
   target 'ChatBotDemoTests' do
     inherit! :search_paths

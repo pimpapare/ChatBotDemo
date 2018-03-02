@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>Add new contacts</string>
+		<key>ServiceName</key>
+		<string>Add new Contacts</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/contacts/put</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Update existing contacts</string>
+		<key>ServiceName</key>
+		<string>Update Contacts</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/contacts/update</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Delete existing contacts</string>
+		<key>ServiceName</key>
+		<string>Delete Contacts</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/contacts/delete</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Delete all contacts in a service</string>
+		<key>ServiceName</key>
+		<string>Delete All Contacts</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/contacts/disablesync</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Create or update contacts in a service</string>
+		<key>ServiceName</key>
+		<string>Create or Update Contacts</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/contacts/change</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Retrieve VIP Contacts in a service</string>
+		<key>ServiceName</key>
+		<string>Retrieve VIP Contacts</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/vipcontacts/list</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Create or Update VIP Contacts in a service</string>
+		<key>ServiceName</key>
+		<string>Create or Update VIP Contacts</string>
+		<key>ServicePath</key>
+		<string>http://devweb01.project-hosting.de/webservices-10/rs/vipcontacts/change/</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Retrieve VIP Contacts in a service (localhost)</string>
+		<key>ServiceName</key>
+		<string>Retrieve VIP Contacts</string>
+		<key>ServicePath</key>
+		<string>http://localhost:8080/webservices/rs/vipcontacts/list</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Create or Update VIP Contacts in a service (localhost)</string>
+		<key>ServiceName</key>
+		<string>Create or Update VIP Contacts</string>
+		<key>ServicePath</key>
+		<string>http://localhost:8080/webservices/rs/vipcontacts/change/</string>
+	</dict>
+</array>
+</plist>

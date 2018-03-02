@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>Register :  Retrieved SubmitIds </string>
+		<key>ServiceName</key>
+		<string>Retrieved SubmitIds </string>
+		<key>ServicePath</key>
+		<string>http://www.ebuero.de/formsys/formsysSubmitId.php</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Register :  Submit Formdata</string>
+		<key>ServiceName</key>
+		<string>Submit Form data</string>
+		<key>ServicePath</key>
+		<string>http://www.ebuero.de/formsys/formsysSubmit.php</string>
+	</dict>
+</array>
+</plist>

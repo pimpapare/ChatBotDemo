@@ -15,6 +15,16 @@
 		1AA79E05204816A600C2E310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AA79E03204816A600C2E310 /* LaunchScreen.storyboard */; };
 		1AA79E10204816A600C2E310 /* ChatBotDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E0F204816A600C2E310 /* ChatBotDemoTests.swift */; };
 		1AA79E1B204816A600C2E310 /* ChatBotDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E1A204816A600C2E310 /* ChatBotDemoUITests.swift */; };
+		1AA79E29204819EC00C2E310 /* MessageKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E28204819EC00C2E310 /* MessageKitViewController.swift */; };
+		1AA79E2C20481A3700C2E310 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E2A20481A3700C2E310 /* MockMessage.swift */; };
+		1AA79E2D20481A3700C2E310 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E2B20481A3700C2E310 /* SampleData.swift */; };
+		1AA79E302048FF6C00C2E310 /* UserObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E2E2048FE2800C2E310 /* UserObjects.swift */; };
+		1AA79E332049090000C2E310 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E322049090000C2E310 /* UserAccount.swift */; };
+		1AA79E3520490CAE00C2E310 /* Settings+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E3420490CAE00C2E310 /* Settings+UserDefaults.swift */; };
+		1AA79E37204921AF00C2E310 /* MessageKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E36204921AF00C2E310 /* MessageKitViewModel.swift */; };
+		1AA79E39204921BD00C2E310 /* MessageKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E38204921BD00C2E310 /* MessageKitModel.swift */; };
+		1AA79E3D2049239D00C2E310 /* MessageObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E3C2049239D00C2E310 /* MessageObjects.swift */; };
+		1AA79E402049242600C2E310 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E3F2049242600C2E310 /* Results.swift */; };
 		431C761DAF58E6181C96D106 /* Pods_ChatBotDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFFF718D01DFB9E97972094 /* Pods_ChatBotDemoTests.framework */; };
 		B0C136044FBD3B33906A9B22 /* Pods_ChatBotDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1518D7C18923A75D4CAC8A2 /* Pods_ChatBotDemoUITests.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +60,16 @@
 		1AA79E16204816A600C2E310 /* ChatBotDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatBotDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AA79E1A204816A600C2E310 /* ChatBotDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotDemoUITests.swift; sourceTree = "<group>"; };
 		1AA79E1C204816A600C2E310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AA79E28204819EC00C2E310 /* MessageKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitViewController.swift; sourceTree = "<group>"; };
+		1AA79E2A20481A3700C2E310 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		1AA79E2B20481A3700C2E310 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		1AA79E2E2048FE2800C2E310 /* UserObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObjects.swift; sourceTree = "<group>"; };
+		1AA79E322049090000C2E310 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		1AA79E3420490CAE00C2E310 /* Settings+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+UserDefaults.swift"; sourceTree = "<group>"; };
+		1AA79E36204921AF00C2E310 /* MessageKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitViewModel.swift; sourceTree = "<group>"; };
+		1AA79E38204921BD00C2E310 /* MessageKitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitModel.swift; sourceTree = "<group>"; };
+		1AA79E3C2049239D00C2E310 /* MessageObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageObjects.swift; sourceTree = "<group>"; };
+		1AA79E3F2049242600C2E310 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		3A6118239367B5D752E89913 /* Pods-ChatBotDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatBotDemoUITests/Pods-ChatBotDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B1D5B82FEEF73D9F4AD7FEE /* Pods-ChatBotDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatBotDemo/Pods-ChatBotDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		4FFFF718D01DFB9E97972094 /* Pods_ChatBotDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBotDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,10 +149,15 @@
 			children = (
 				1AA79DFA204816A600C2E310 /* AppDelegate.swift */,
 				1AA79DFC204816A600C2E310 /* ViewController.swift */,
+				1AA79E3A204921EC00C2E310 /* MessageKit */,
+				1AA79E2A20481A3700C2E310 /* MockMessage.swift */,
+				1AA79E2B20481A3700C2E310 /* SampleData.swift */,
+				1AA79E3420490CAE00C2E310 /* Settings+UserDefaults.swift */,
 				1AA79DFE204816A600C2E310 /* Main.storyboard */,
 				1AA79E01204816A600C2E310 /* Assets.xcassets */,
 				1AA79E03204816A600C2E310 /* LaunchScreen.storyboard */,
 				1AA79E06204816A600C2E310 /* Info.plist */,
+				1AA79E31204907E700C2E310 /* Objects */,
 			);
 			path = ChatBotDemo;
 			sourceTree = "<group>";
@@ -153,6 +178,43 @@
 				1AA79E1C204816A600C2E310 /* Info.plist */,
 			);
 			path = ChatBotDemoUITests;
+			sourceTree = "<group>";
+		};
+		1AA79E31204907E700C2E310 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				1AA79E3F2049242600C2E310 /* Results.swift */,
+				1AA79E3B2049238000C2E310 /* User */,
+				1AA79E3E204923A400C2E310 /* Message */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		1AA79E3A204921EC00C2E310 /* MessageKit */ = {
+			isa = PBXGroup;
+			children = (
+				1AA79E28204819EC00C2E310 /* MessageKitViewController.swift */,
+				1AA79E36204921AF00C2E310 /* MessageKitViewModel.swift */,
+				1AA79E38204921BD00C2E310 /* MessageKitModel.swift */,
+			);
+			path = MessageKit;
+			sourceTree = "<group>";
+		};
+		1AA79E3B2049238000C2E310 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1AA79E2E2048FE2800C2E310 /* UserObjects.swift */,
+				1AA79E322049090000C2E310 /* UserAccount.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		1AA79E3E204923A400C2E310 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				1AA79E3C2049239D00C2E310 /* MessageObjects.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		4B90FDE8014F4004C0806B75 /* Frameworks */ = {
@@ -447,7 +509,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AA79DFD204816A600C2E310 /* ViewController.swift in Sources */,
+				1AA79E3D2049239D00C2E310 /* MessageObjects.swift in Sources */,
+				1AA79E3520490CAE00C2E310 /* Settings+UserDefaults.swift in Sources */,
+				1AA79E39204921BD00C2E310 /* MessageKitModel.swift in Sources */,
+				1AA79E37204921AF00C2E310 /* MessageKitViewModel.swift in Sources */,
 				1AA79DFB204816A600C2E310 /* AppDelegate.swift in Sources */,
+				1AA79E402049242600C2E310 /* Results.swift in Sources */,
+				1AA79E29204819EC00C2E310 /* MessageKitViewController.swift in Sources */,
+				1AA79E302048FF6C00C2E310 /* UserObjects.swift in Sources */,
+				1AA79E2D20481A3700C2E310 /* SampleData.swift in Sources */,
+				1AA79E2C20481A3700C2E310 /* MockMessage.swift in Sources */,
+				1AA79E332049090000C2E310 /* UserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

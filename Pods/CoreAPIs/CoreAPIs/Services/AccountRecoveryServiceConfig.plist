@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Description</key>
+		<string>Request a password code via email</string>
+		<key>ServiceName</key>
+		<string>Recovery Password via Email</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/accountRecovery/resetpassinapp?method=email&amp;username=</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Request a password code via sms</string>
+		<key>ServiceName</key>
+		<string>Recovery Password via SMS</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/accountRecovery/resetPassword?method=sms&amp;username=</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Request usernames via email</string>
+		<key>ServiceName</key>
+		<string>Recovery Username via Email</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/accountRecovery/requestUsername?email=</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Request usernames via sms</string>
+		<key>ServiceName</key>
+		<string>Recovery Username via SMS</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/accountRecovery/requestUsername?mobile=</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Recovery password</string>
+		<key>ServiceName</key>
+		<string>Change Password with code and password</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/accountRecovery/changepass</string>
+	</dict>
+	<dict>
+		<key>Description</key>
+		<string>Recovery password method email with username</string>
+		<key>ServiceName</key>
+		<string>Change Password method email with username</string>
+		<key>ServicePath</key>
+		<string>https://rest.office-platform.net/webservices-22/rs/accountRecovery/resetPassword?method=email&amp;username=</string>
+	</dict>
+</array>
+</plist>
