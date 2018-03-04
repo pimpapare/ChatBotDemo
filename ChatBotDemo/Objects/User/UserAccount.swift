@@ -16,7 +16,7 @@ open class UserAccount: NSObject {
     
     open static let sharedInstance = UserAccount()
     
-    func fetchUserAccount() -> UserProfile? {
+    func fetchUserAccount() -> UserInformation? {
         let userObjects:UserObjectsManagement = UserObjectsManagement()
         return userObjects.getObjects()
     }

@@ -26,7 +26,7 @@ import Foundation
 import MessageKit
 import CoreLocation
 
-struct MockMessage: MessageType {
+struct Message: MessageType {
 	
 	var messageId: String
 	var sender: Sender

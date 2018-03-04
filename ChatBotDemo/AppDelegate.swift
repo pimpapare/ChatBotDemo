@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AI
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,9 +17,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        configurationAI()
+        configurationRealm()
         return true
     }
+    
+    func configurationRealm() {
+    
+        let config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+            
+            // Set the block which will be called automatically when opening a Realm with
+            // a schema version lower than the one set above
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if (oldSchemaVersion < 1) {
+                    // Nothing to do!
+                    // Realm will automatically detect new properties and removed propertiesx
+                    // And will update the schema on disk automatically
+                }
+        })
+        
+        // Tell Realm to use this new configuration object for the default Realm
+        Realm.Configuration.defaultConfiguration = config
+    }
+    
+    func configurationAI() {
+        AI.configure("41cb3db6d57f4b35b3f0b3e30d22d4a4")
+   }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -63,16 +63,16 @@ open class MessageObjectsManagement: NSObject {
     
     func getObjectsWitLimit(startLimit:Int,endLimit:Int) -> MessageObjects?{
         
-        if let objects = realm.objects(MessageObjects.self).filter("sth = sth").get(offset: startLimit, limit: endLimit)  {
-            return objects
-        }
-        
-        count = count + 1
-        
-        if count == 3 {
-            count = 0
-            return nil
-        }
+//        if let objects = realm.objects(MessageObjects.self).filter("sth = sth").get(offset: startLimit, limit: endLimit)  {
+//            return objects
+//        }
+//        
+//        count = count + 1
+//        
+//        if count == 3 {
+//            count = 0
+//            return nil
+//        }
         
         return getObjects()
     }

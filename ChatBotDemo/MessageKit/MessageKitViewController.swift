@@ -9,26 +9,45 @@
 import UIKit
 import Material
 import MessageKit
+import AVFoundation
+
+public enum MobileCallHandlingType: Int {
+    case notForwarding = 1
+    case forwardingOnlyVIP = 2
+    case forwardingAll = 3
+    case none = 0
+}
 
 protocol MessageKitProtocol {
     
+    func textResponseSuccess(text:String)
+    func textResponseError()
 }
 
-class MessageKitViewController: MessagesViewController {
+class MessageKitViewController: MessagesViewController, MessageKitProtocol {
     
     let refreshControl = UIRefreshControl()
     
-    var messageList: [MockMessage] = []
+    var messageList: [Message] = []
     var messageKitViewModel:MessageKitViewModel!
+    let speechSynthesizer = AVSpeechSynthesizer()
     
     var isTyping = false
+    var lastestResponse:String = ""
+    var createMessage:String = ""
+    var callHandlingTypeText:String = ""
     
+    var userInputMessage:Bool = false
+    var callHandlingType: MobileCallHandlingType?
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         prepareAppearance()
         prepareNavigationBar()
         prepareCollectionView()
+        
+        prepareMessageInputBar()
     }
     
     func prepareNavigationBar() {
@@ -46,35 +65,53 @@ class MessageKitViewController: MessagesViewController {
     }
     
     func prepareAppearance() {
+        
+        messageKitViewModel = MessageKitViewModel(view: self)
 
-        messageKitViewModel = MessageKitViewModel(view: self, viewControllerModel: MessageKitModel())
+        let microphoneButton:InputBarButtonItem = InputBarButtonItem(frame: CGRect(x: 0, y: 0, width: 50, height: messageInputBar.frame.size.height))
+        microphoneButton.setImage(Icon.cm.microphone, for: .normal)
+        microphoneButton.addTarget(self, action: #selector(microphonePressed), for: .touchUpInside)
         
-        let messagesToFetch = UserDefaults.standard.mockMessagesCount()
+        var currentLeftStack = messageInputBar.leftStackViewItems
+        currentLeftStack.append(microphoneButton)
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            SampleData.shared.getMessages(count: messagesToFetch) { messages in
-                DispatchQueue.main.async {
-                    self.messageList = messages
-                    self.messagesCollectionView.reloadData()
-                    self.messagesCollectionView.scrollToBottom()
-                }
-            }
-        }
+        messageInputBar.setStackViewItems(
+            currentLeftStack,forStack: InputStackView.Position.left,animated: false
+        )
+
+        messageInputBar.setLeftStackViewWidthConstant(to: 45, animated: false)
         
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(named: "ic_keyboard"),
-                            style: .plain,
-                            target: self,
-                            action: #selector(MessageKitViewController.handleKeyboardButton)),
-            UIBarButtonItem(image: UIImage(named: "ic_typing"),
-                            style: .plain,
-                            target: self,
-                            action: #selector(MessageKitViewController.handleTyping))
-        ]
+        //        let messagesToFetch = UserDefaults.standard.mockMessagesCount()
+        //
+        //        DispatchQueue.global(qos: .userInitiated).async {
+        //            SampleData.shared.getMessages(count: messagesToFetch) { messages in
+        //                DispatchQueue.main.async {
+        //                    self.messageList = messages
+        //                    self.messagesCollectionView.reloadData()
+        //                    self.messagesCollectionView.scrollToBottom()
+        //                }
+        //            }
+        //        }
+        //
+        //        navigationItem.rightBarButtonItems = [
+        //            UIBarButtonItem(image: UIImage(named: "ic_keyboard"),
+        //                            style: .plain,
+        //                            target: self,
+        //                            action: #selector(MessageKitViewController.handleKeyboardButton)),
+        //            UIBarButtonItem(image: UIImage(named: "ic_typing"),
+        //                            style: .plain,
+        //                            target: self,
+        //                            action: #selector(MessageKitViewController.handleTyping))
+        //        ]
+    }
+    
+    @objc func microphonePressed() {
+        
+        print("TEST PRESS ")
     }
     
     func prepareCollectionView() {
-
+        
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -88,6 +125,8 @@ class MessageKitViewController: MessagesViewController {
         messagesCollectionView.addSubview(refreshControl)
         
         refreshControl.addTarget(self, action: #selector(MessageKitViewController.loadMoreMessages), for: .valueChanged)
+        
+        messageInputBar.rightStackView
     }
     
     @objc func handleTyping() {
@@ -142,7 +181,7 @@ class MessageKitViewController: MessagesViewController {
             }),
             UIAlertAction(title: "iMessage", style: .default, handler: { _ in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-                    self.iMessage()
+                    self.prepareMessageInputBar()
                 })
             }),
             UIAlertAction(title: "Default", style: .default, handler: { _ in
@@ -216,11 +255,13 @@ class MessageKitViewController: MessagesViewController {
         messageInputBar.setStackViewItems(items, forStack: .bottom, animated: true)
     }
     
-    func iMessage() {
+    func prepareMessageInputBar() {
+        
         defaultStyle()
         messageInputBar.isTranslucent = false
         messageInputBar.backgroundView.backgroundColor = .white
         messageInputBar.separatorLine.isHidden = true
+        
         messageInputBar.inputTextView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
@@ -230,16 +271,27 @@ class MessageKitViewController: MessagesViewController {
         messageInputBar.inputTextView.layer.cornerRadius = 16.0
         messageInputBar.inputTextView.layer.masksToBounds = true
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        messageInputBar.setRightStackViewWidthConstant(to: 36, animated: true)
+
+        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: true)
+        messageInputBar.setRightStackViewWidthConstant(to: 50, animated: true)
         messageInputBar.setStackViewItems([messageInputBar.sendButton], forStack: .right, animated: true)
+        
+        let items = [
+            
+            makeButton(named: "ic_mic").onTextViewDidChange { button, textView in
+                button.isEnabled = textView.text.isEmpty
+            }
+        ]
+        
+        messageInputBar.setStackViewItems(items, forStack: .left, animated: true)
+
         messageInputBar.sendButton.imageView?.backgroundColor = UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1)
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: true)
-        messageInputBar.sendButton.image = #imageLiteral(resourceName: "ic_up")
-        messageInputBar.sendButton.title = nil
+        messageInputBar.sendButton.setSize(CGSize(width: 50, height: 40), animated: true)
+        messageInputBar.sendButton.title = "SEND"
         messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
         messageInputBar.sendButton.backgroundColor = .clear
-        messageInputBar.textViewPadding.right = -38
+        messageInputBar.textViewPadding.right = -50
     }
     
     func defaultStyle() {
@@ -263,8 +315,67 @@ class MessageKitViewController: MessagesViewController {
             }.onDeselected {
                 $0.tintColor = UIColor.lightGray
             }.onTouchUpInside { _ in
-                print("Item Tapped")
+                self.recordAudio()
         }
+    }
+    
+    func recordAudio() {
+        
+        
+    }
+}
+
+extension MessageKitViewController {
+    
+    func setUpViewForSender(text:String) {
+        
+        messageInputBar.inputTextView.text = ""
+        
+        DispatchQueue.main.async {
+            let attributedText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.lightGray])
+            let message = Message(attributedText: attributedText, sender: self.currentSender(), messageId: UUID().uuidString, date: Date())
+            self.messageList.append(message)
+            self.messagesCollectionView.insertSections([self.messageList.count - 1])
+            self.messagesCollectionView.scrollToBottom()
+        }
+    }
+    
+    func setUpViewForReceiver(text:String) {
+        
+        lastestResponse = text
+        verifyReceiver(text: text)
+        
+        DispatchQueue.main.async {
+            let attributedText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.lightGray])
+            let message = Message(attributedText: attributedText, sender: self.currentReceiver(), messageId: UUID().uuidString, date: Date())
+            self.messageList.append(message)
+            self.messagesCollectionView.insertSections([self.messageList.count - 1])
+            self.messagesCollectionView.scrollToBottom()
+        }
+    }
+    
+    func textResponseSuccess(text:String) {
+        
+        print("📲 Text Response: ",text)
+        
+        setUpViewForReceiver(text: text)
+        speechVoice(text: text)
+    }
+    
+    func speechVoice(text:String) {
+
+        let synth = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US") // TH-th
+        
+        utterance.rate = 0.5
+        utterance.volume = 1
+        utterance.pitchMultiplier = 1.5 // 0.5-2 Men-Women
+        synth.speak(utterance)
+    }
+    
+    func textResponseError() {
+        
     }
 }
 
@@ -272,6 +383,10 @@ extension MessageKitViewController: MessagesDataSource {
     
     func currentSender() -> Sender {
         return SampleData.shared.currentSender
+    }
+    
+    func currentReceiver() -> Sender {
+        return SampleData.shared.currentReceiver
     }
     
     func numberOfMessages(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -292,19 +407,18 @@ extension MessageKitViewController: MessagesDataSource {
         struct ConversationDateFormatter {
             static let formatter: DateFormatter = {
                 let formatter = DateFormatter()
-                formatter.dateStyle = .medium
+                formatter.dateFormat = "HH:mm"
                 return formatter
             }()
         }
+        
         let formatter = ConversationDateFormatter.formatter
         let dateString = formatter.string(from: message.sentDate)
         return NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
     }
-    
 }
 
 // MARK: - MessagesDisplayDelegate
-
 extension MessageKitViewController: MessagesDisplayDelegate {
     
     // MARK: - Text Messages
@@ -341,24 +455,24 @@ extension MessageKitViewController: MessagesDisplayDelegate {
     
     // MARK: - Location Messages
     
-//    func annotationViewForLocation(message: MessageType, at indexPath: IndexPath, in messageCollectionView: MessagesCollectionView) -> MKAnnotationView? {
-//        let annotationView = MKAnnotationView(annotation: nil, reuseIdentifier: nil)
-//        let pinImage = #imageLiteral(resourceName: "pin")
-//        annotationView.image = pinImage
-//        annotationView.centerOffset = CGPoint(x: 0, y: -pinImage.size.height / 2)
-//        return annotationView
-//    }
+    //    func annotationViewForLocation(message: MessageType, at indexPath: IndexPath, in messageCollectionView: MessagesCollectionView) -> MKAnnotationView? {
+    //        let annotationView = MKAnnotationView(annotation: nil, reuseIdentifier: nil)
+    //        let pinImage = #imageLiteral(resourceName: "pin")
+    //        annotationView.image = pinImage
+    //        annotationView.centerOffset = CGPoint(x: 0, y: -pinImage.size.height / 2)
+    //        return annotationView
+    //    }
     
-//    func animationBlockForLocation(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> ((UIImageView) -> Void)? {
-//        return { view in
-//            view.layer.transform = CATransform3DMakeScale(0, 0, 0)
-//            view.alpha = 0.0
-//            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [], animations: {
-//                view.layer.transform = CATransform3DIdentity
-//                view.alpha = 1.0
-//            }, completion: nil)
-//        }
-//    }
+    //    func animationBlockForLocation(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> ((UIImageView) -> Void)? {
+    //        return { view in
+    //            view.layer.transform = CATransform3DMakeScale(0, 0, 0)
+    //            view.alpha = 0.0
+    //            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [], animations: {
+    //                view.layer.transform = CATransform3DIdentity
+    //                view.alpha = 1.0
+    //            }, completion: nil)
+    //        }
+    //    }
     
     func snapshotOptionsForLocation(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> LocationMessageSnapshotOptions {
         
@@ -461,31 +575,43 @@ extension MessageKitViewController: MessageInputBarDelegate {
     
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         
-        // Each NSTextAttachment that contains an image will count as one empty character in the text: String
+        messageKitViewModel.sendTextRequest(text: text)
+        setUpViewForSender(text: text)
         
-        for component in inputBar.inputTextView.components {
-            
-            if let image = component as? UIImage {
-                
-                let imageMessage = MockMessage(image: image, sender: currentSender(), messageId: UUID().uuidString, date: Date())
-                messageList.append(imageMessage)
-                messagesCollectionView.insertSections([messageList.count - 1])
-                
-            } else if let text = component as? String {
-                
-                let attributedText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.blue])
-                
-                let message = MockMessage(attributedText: attributedText, sender: currentSender(), messageId: UUID().uuidString, date: Date())
-                messageList.append(message)
-                messagesCollectionView.insertSections([messageList.count - 1])
-            }
-            
-        }
-        
-        inputBar.inputTextView.text = String()
-        messagesCollectionView.scrollToBottom()
+        /*
+         // Each NSTextAttachment that contains an image will count as one empty character in the text: String
+         
+         for component in inputBar.inputTextView.components {
+         
+         if let image = component as? UIImage {
+         
+         let imageMessage = MockMessage(image: image, sender: currentSender(), messageId: UUID().uuidString, date: Date())
+         messageList.append(imageMessage)
+         messagesCollectionView.insertSections([messageList.count - 1])
+         
+         } else if let text = component as? String {
+         
+         let attributedText = NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.blue])
+         
+         let message = MockMessage(attributedText: attributedText, sender: currentSender(), messageId: UUID().uuidString, date: Date())
+         messageList.append(message)
+         messagesCollectionView.insertSections([messageList.count - 1])
+         }
+         
+         }
+         
+         inputBar.inputTextView.text = String()
+         messagesCollectionView.scrollToBottom()
+         */
     }
     
+    func verifyReceiver(text:String) {
+        
+    }
+    
+    func verifyResponse(text:String) {
+        messageKitViewModel.sendTextRequest(text: text)
+    }
 }
 
 

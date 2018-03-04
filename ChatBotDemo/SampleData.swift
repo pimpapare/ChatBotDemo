@@ -55,15 +55,17 @@ final class SampleData {
         "Price is rarely the most important thing. A cheap product might sell some units. Somebody gets it home and they feel great when they pay the money, but then they get it home and use it and the joy is gone."
     ]
 
-    let dan = Sender(id: "123456", displayName: "Dan Leonard")
-    let steven = Sender(id: "654321", displayName: "Steven")
-    let jobs = Sender(id: "000001", displayName: "Steve Jobs")
-    let cook = Sender(id: "656361", displayName: "Tim Cook")
+    let customer = Sender(id: "11111", displayName: "Customer")
+    let aiBot = Sender(id: "00000", displayName: "Secretary")
 
-    lazy var senders = [dan, steven, jobs, cook]
+    lazy var senders = [customer, aiBot]
 
     var currentSender: Sender {
-        return steven
+        return customer
+    }
+
+    var currentReceiver: Sender {
+        return aiBot
     }
 
     let messageImages: [String] = ["ic_holiday_3", "ic_holiday_4", "ic_holiday_5"]
@@ -141,7 +143,7 @@ final class SampleData {
         }
     }
 
-    func randomMessage() -> MockMessage {
+    func randomMessage() -> Message {
 
         let randomNumberSender = Int(arc4random_uniform(UInt32(senders.count)))
         let randomNumberText = Int(arc4random_uniform(UInt32(messageTextValues.count)))
@@ -155,29 +157,29 @@ final class SampleData {
 
         switch messageTypes[randomMessageType] {
         case "Text":
-            return MockMessage(text: messageTextValues[randomNumberText], sender: sender, messageId: uniqueID, date: date)
+            return Message(text: messageTextValues[randomNumberText], sender: sender, messageId: uniqueID, date: date)
         case "AttributedText":
             let attributedText = attributedString(with: messageTextValues[randomNumberText])
-            return MockMessage(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date)
+            return Message(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date)
         case "Photo":
             let imageName = messageImages[randomNumberImage]
             let image:UIImage = UIImage(named:imageName)!
-            return MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
+            return Message(image: image, sender: sender, messageId: uniqueID, date: date)
         case "Video":
             let imageName = messageImages[randomNumberImage]
             let image:UIImage = UIImage(named:imageName)!
-            return MockMessage(thumbnail: image, sender: sender, messageId: uniqueID, date: date)
+            return Message(thumbnail: image, sender: sender, messageId: uniqueID, date: date)
         case "Location":
-            return MockMessage(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date)
+            return Message(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date)
         case "Emoji":
-            return MockMessage(emoji: emojis[randomNumberEmoji], sender: sender, messageId: uniqueID, date: date)
+            return Message(emoji: emojis[randomNumberEmoji], sender: sender, messageId: uniqueID, date: date)
         default:
             fatalError("Unrecognized mock message type")
         }
     }
 
-    func getMessages(count: Int, completion: ([MockMessage]) -> Void) {
-        var messages: [MockMessage] = []
+    func getMessages(count: Int, completion: ([Message]) -> Void) {
+        var messages: [Message] = []
         for _ in 0..<count {
             messages.append(randomMessage())
         }
@@ -186,17 +188,12 @@ final class SampleData {
 
     func getAvatarFor(sender: Sender) -> Avatar {
         switch sender {
-        case dan:
-            return Avatar(image: UIImage(named:"ic_holiday_3"), initials: "DL")
-        case steven:
-            return Avatar(initials: "S")
-        case jobs:
-            return Avatar(image: UIImage(named:"ic_holiday_4"), initials: "SJ")
-        case cook:
-            return Avatar(image: UIImage(named:"ic_holiday_5"))
+        case aiBot:
+            return Avatar(image: UIImage(named:"secretary_icon"), initials: "S")
+        case customer:
+            return Avatar(initials: "C")
         default:
             return Avatar()
         }
     }
-
 }

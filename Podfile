@@ -9,7 +9,7 @@ target 'ChatBotDemo' do
   pod 'MessageKit'
   pod 'RealmSwift', '~> 2.2'
   pod 'Material'
-  
+  pod 'AI'
 
   target 'ChatBotDemoTests' do
     inherit! :search_paths

@@ -1,4 +1,5 @@
 PODS:
+  - AI (0.0.8)
   - CoreAPIs (0.0.3)
   - Material (2.13.5):
     - Material/Core (= 2.13.5)
@@ -15,6 +16,7 @@ PODS:
     - Realm (= 2.10.2)
 
 DEPENDENCIES:
+  - AI
   - CoreAPIs (from `http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git`)
   - Material
   - MessageKit
@@ -30,6 +32,7 @@ CHECKOUT OPTIONS:
     :git: http://p.chaichompoo@stash.coast.ebuero.de/scm/iph/coreapis.git
 
 SPEC CHECKSUMS:
+  AI: 73c9a26daeb5362016fd345a2d0ee346919a526f
   CoreAPIs: e2e65c7fdf460ff00615938e83da420a388a4708
   Material: ced3fd11882147b135f897ca20227174bb104ad0
   MessageKit: fc74d71d9b05385138d47b3a4b7beef5c687daf1
@@ -37,6 +40,6 @@ SPEC CHECKSUMS:
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
   RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
 
-PODFILE CHECKSUM: b5e1dae892fea57eef581a459e26acde7d67a41a
+PODFILE CHECKSUM: e763cccf0e4186946ad10df5897ff184a80c1507
 
 COCOAPODS: 1.2.1

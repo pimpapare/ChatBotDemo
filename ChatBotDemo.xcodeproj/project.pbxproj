@@ -16,7 +16,7 @@
 		1AA79E10204816A600C2E310 /* ChatBotDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E0F204816A600C2E310 /* ChatBotDemoTests.swift */; };
 		1AA79E1B204816A600C2E310 /* ChatBotDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E1A204816A600C2E310 /* ChatBotDemoUITests.swift */; };
 		1AA79E29204819EC00C2E310 /* MessageKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E28204819EC00C2E310 /* MessageKitViewController.swift */; };
-		1AA79E2C20481A3700C2E310 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E2A20481A3700C2E310 /* MockMessage.swift */; };
+		1AA79E2C20481A3700C2E310 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E2A20481A3700C2E310 /* Message.swift */; };
 		1AA79E2D20481A3700C2E310 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E2B20481A3700C2E310 /* SampleData.swift */; };
 		1AA79E302048FF6C00C2E310 /* UserObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E2E2048FE2800C2E310 /* UserObjects.swift */; };
 		1AA79E332049090000C2E310 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79E322049090000C2E310 /* UserAccount.swift */; };
@@ -61,7 +61,7 @@
 		1AA79E1A204816A600C2E310 /* ChatBotDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotDemoUITests.swift; sourceTree = "<group>"; };
 		1AA79E1C204816A600C2E310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AA79E28204819EC00C2E310 /* MessageKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitViewController.swift; sourceTree = "<group>"; };
-		1AA79E2A20481A3700C2E310 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		1AA79E2A20481A3700C2E310 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		1AA79E2B20481A3700C2E310 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		1AA79E2E2048FE2800C2E310 /* UserObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObjects.swift; sourceTree = "<group>"; };
 		1AA79E322049090000C2E310 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				1AA79DFA204816A600C2E310 /* AppDelegate.swift */,
 				1AA79DFC204816A600C2E310 /* ViewController.swift */,
 				1AA79E3A204921EC00C2E310 /* MessageKit */,
-				1AA79E2A20481A3700C2E310 /* MockMessage.swift */,
+				1AA79E2A20481A3700C2E310 /* Message.swift */,
 				1AA79E2B20481A3700C2E310 /* SampleData.swift */,
 				1AA79E3420490CAE00C2E310 /* Settings+UserDefaults.swift */,
 				1AA79DFE204816A600C2E310 /* Main.storyboard */,
@@ -518,7 +518,7 @@
 				1AA79E29204819EC00C2E310 /* MessageKitViewController.swift in Sources */,
 				1AA79E302048FF6C00C2E310 /* UserObjects.swift in Sources */,
 				1AA79E2D20481A3700C2E310 /* SampleData.swift in Sources */,
-				1AA79E2C20481A3700C2E310 /* MockMessage.swift in Sources */,
+				1AA79E2C20481A3700C2E310 /* Message.swift in Sources */,
 				1AA79E332049090000C2E310 /* UserAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

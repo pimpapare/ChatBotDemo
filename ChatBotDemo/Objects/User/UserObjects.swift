@@ -28,10 +28,12 @@ open class UserObjectsManagement: NSObject {
 
     func writeObjects(withObjects object: UserCredentials) {
         
-        let userProfile = UserProfile()
+        let userProfile = UserInformation()
         
         userProfile.username = object.username
-        
+        userProfile.password = object.password
+        userProfile.ticket = object.ticket
+
         try! realm.write {
             realm.add(userProfile)
         }
@@ -40,13 +42,13 @@ open class UserObjectsManagement: NSObject {
     func removeObjects(){
         
         try! realm.write {
-            realm.delete(realm.objects(UserProfile.self))
+            realm.delete(realm.objects(UserInformation.self))
         }
     }
     
-    func getObjects() -> UserProfile?{
+    func getObjects() -> UserInformation?{
         
-        if let objects = realm.objects(UserProfile.self).first  {
+        if let objects = realm.objects(UserInformation.self).first  {
             return objects
         }
         
@@ -63,6 +65,7 @@ open class UserObjectsManagement: NSObject {
 
 class UserInformation: Object {
     
+    @objc dynamic var username:String?
     @objc dynamic var password:String?
     @objc dynamic var ticket:String?
 }
