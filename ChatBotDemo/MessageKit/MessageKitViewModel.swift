@@ -66,9 +66,13 @@ class MessageKitViewModel: NSObject {
         
         var completeResult:Bool = true
         
+        if result.result.parameters?.count == 0 {
+            completeResult = false
+        }
+        
         for obj in result.result.parameters!{
-            print("💛 ",obj.value)
-            if obj.value as? String ?? "" == "" || obj.value == nil {
+
+            if obj.value as? String ?? "" == ""{
                 completeResult = false
             }
         }
@@ -79,24 +83,36 @@ class MessageKitViewModel: NSObject {
                 let parameter = Parameter(key: parameter.key, value: parameter.value as? String ?? "")
                 parameters.append(parameter)
             }
+            
+            viewController.confirmCreateAppointmentState(confirm: true)
+        }
+    }
+    
+    func clearDataForCreateDefaultAppointment() {
+
+        parameters = [Parameter]()
+        sendTextRequest(text: "cancel")
+    }
+    
+    func prepareAppointmentDataForCreateDefaultAppointment() {
+
+        if parameters.count == 0 {
+            return
         }
         
-        if result.result.metadata.intentName == "create.appointment.confirm" {
-            
-            var mutableAppointment: Appointment!
-            mutableAppointment = Appointment(withIdentifier: "")
-            
-            let callHandlingType = verifyCallHandlingType(text: parameters[0].value).rawValue
-            mutableAppointment.callHandling = CallHandling(withInstructionID: "\(callHandlingType)")
-            mutableAppointment.callHandling?.instructionID = "\(callHandlingType)"
-            mutableAppointment.callHandling?.isDefault = false
-            mutableAppointment.callHandling?.isProfile = false
-            mutableAppointment.callHandling?.profileName = "text"
-            mutableAppointment.callHandling?.message = parameters[1].value
-            
-            parameters = [Parameter]()
-            self.createDefaultCellHandling(appointment: mutableAppointment)
-        }
+        var mutableAppointment: Appointment!
+        mutableAppointment = Appointment(withIdentifier: "")
+        
+        let callHandlingType = verifyCallHandlingType(text: parameters[0].value).rawValue
+        mutableAppointment.callHandling = CallHandling(withInstructionID: "\(callHandlingType)")
+        mutableAppointment.callHandling?.instructionID = "\(callHandlingType)"
+        mutableAppointment.callHandling?.isDefault = false
+        mutableAppointment.callHandling?.isProfile = false
+        mutableAppointment.callHandling?.profileName = "text"
+        mutableAppointment.callHandling?.message = parameters[1].value
+        
+        parameters = [Parameter]()
+        self.createDefaultCellHandling(appointment: mutableAppointment)
     }
 
     func verifyCallHandlingType(text:String) -> MobileCallHandlingType{

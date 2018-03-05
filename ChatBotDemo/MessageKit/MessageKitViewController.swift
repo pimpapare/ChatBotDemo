@@ -22,6 +22,8 @@ protocol MessageKitProtocol {
     
     func textResponseSuccess(text:String)
     func textResponseError()
+    func prepareViewForconfirmCreateAppointment()
+    func confirmCreateAppointmentState(confirm:Bool)
 }
 
 class MessageKitViewController: MessagesViewController, MessageKitProtocol {
@@ -38,8 +40,10 @@ class MessageKitViewController: MessagesViewController, MessageKitProtocol {
     var callHandlingTypeText:String = ""
     
     var userInputMessage:Bool = false
+    var isConfirmState:Bool = false
+    
     var callHandlingType: MobileCallHandlingType?
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -78,31 +82,31 @@ class MessageKitViewController: MessagesViewController, MessageKitProtocol {
         messageInputBar.setStackViewItems(
             currentLeftStack,forStack: InputStackView.Position.left,animated: false
         )
-
+        
         messageInputBar.setLeftStackViewWidthConstant(to: 45, animated: false)
         
-        //        let messagesToFetch = UserDefaults.standard.mockMessagesCount()
-        //
-        //        DispatchQueue.global(qos: .userInitiated).async {
-        //            SampleData.shared.getMessages(count: messagesToFetch) { messages in
-        //                DispatchQueue.main.async {
-        //                    self.messageList = messages
-        //                    self.messagesCollectionView.reloadData()
-        //                    self.messagesCollectionView.scrollToBottom()
-        //                }
-        //            }
-        //        }
-        //
-        //        navigationItem.rightBarButtonItems = [
-        //            UIBarButtonItem(image: UIImage(named: "ic_keyboard"),
-        //                            style: .plain,
-        //                            target: self,
-        //                            action: #selector(MessageKitViewController.handleKeyboardButton)),
-        //            UIBarButtonItem(image: UIImage(named: "ic_typing"),
-        //                            style: .plain,
-        //                            target: self,
-        //                            action: #selector(MessageKitViewController.handleTyping))
-        //        ]
+        let messagesToFetch = UserDefaults.standard.mockMessagesCount()
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            SampleData.shared.getMessages(count: messagesToFetch) { messages in
+                DispatchQueue.main.async {
+                    self.messageList = messages
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToBottom()
+                }
+            }
+        }
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(named: "ic_keyboard"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(handleKeyboardButton)),
+            UIBarButtonItem(image: UIImage(named: "ic_typing"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(handleTyping))
+        ]
     }
     
     @objc func microphonePressed() {
@@ -126,7 +130,6 @@ class MessageKitViewController: MessagesViewController, MessageKitProtocol {
         
         refreshControl.addTarget(self, action: #selector(MessageKitViewController.loadMoreMessages), for: .valueChanged)
         
-        messageInputBar.rightStackView
     }
     
     @objc func handleTyping() {
@@ -141,18 +144,6 @@ class MessageKitViewController: MessagesViewController, MessageKitProtocol {
             messageInputBar.topStackViewPadding = .zero
             
         } else {
-            
-            let label = UILabel()
-            label.text = "nathan.tannar is typing..."
-            label.font = UIFont.boldSystemFont(ofSize: 16)
-            messageInputBar.topStackView.addArrangedSubview(label)
-            
-            
-            messageInputBar.topStackViewPadding.top = 6
-            messageInputBar.topStackViewPadding.left = 12
-            
-            // The backgroundView doesn't include the topStackView. This is so things in the topStackView can have transparent backgrounds if you need it that way or another color all together
-            messageInputBar.backgroundColor = messageInputBar.backgroundView.backgroundColor
             
         }
     }
@@ -258,10 +249,10 @@ class MessageKitViewController: MessagesViewController, MessageKitProtocol {
     func prepareMessageInputBar() {
         
         defaultStyle()
+        
         messageInputBar.isTranslucent = false
         messageInputBar.backgroundView.backgroundColor = .white
         messageInputBar.separatorLine.isHidden = true
-        
         messageInputBar.inputTextView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
@@ -271,27 +262,27 @@ class MessageKitViewController: MessagesViewController, MessageKitProtocol {
         messageInputBar.inputTextView.layer.cornerRadius = 16.0
         messageInputBar.inputTextView.layer.masksToBounds = true
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-
-        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: true)
-        messageInputBar.setRightStackViewWidthConstant(to: 50, animated: true)
+        messageInputBar.setStackViewItems([messageInputBar.sendButton], forStack: .right, animated: true)
+        
         messageInputBar.setStackViewItems([messageInputBar.sendButton], forStack: .right, animated: true)
         
         let items = [
-            
-            makeButton(named: "ic_mic").onTextViewDidChange { button, textView in
-                button.isEnabled = textView.text.isEmpty
+            makeButton(named: "ic_mic").onSelected {_ in
+                print("clicked")
             }
         ]
         
         messageInputBar.setStackViewItems(items, forStack: .left, animated: true)
-
+        
         messageInputBar.sendButton.imageView?.backgroundColor = UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1)
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         messageInputBar.sendButton.setSize(CGSize(width: 50, height: 40), animated: true)
         messageInputBar.sendButton.title = "SEND"
         messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
         messageInputBar.sendButton.backgroundColor = .clear
-        messageInputBar.textViewPadding.right = -50
+        messageInputBar.textViewPadding.right = -60
+        messageInputBar.textViewPadding.left = 10
+        messageInputBar.setLeftStackViewWidthConstant(to: 40, animated: true)
     }
     
     func defaultStyle() {
@@ -303,7 +294,6 @@ class MessageKitViewController: MessagesViewController, MessageKitProtocol {
     }
     
     // MARK: - Helpers
-    
     func makeButton(named: String) -> InputBarButtonItem {
         return InputBarButtonItem()
             .configure {
@@ -363,7 +353,7 @@ extension MessageKitViewController {
     }
     
     func speechVoice(text:String) {
-
+        
         let synth = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US") // TH-th
@@ -375,6 +365,11 @@ extension MessageKitViewController {
     }
     
     func textResponseError() {
+        
+    }
+    
+    func prepareViewForconfirmCreateAppointment() {
+        
         
     }
 }
@@ -436,16 +431,68 @@ extension MessageKitViewController: MessagesDisplayDelegate {
     }
     
     // MARK: - All Messages
-    
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ? UIColor(red: 69/255, green: 193/255, blue: 89/255, alpha: 1) : UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        
+        messageInputBar.topStackView.arrangedSubviews.first?.removeFromSuperview()
+        messageInputBar.topStackViewPadding = .zero
+
+        if isConfirmState {
+            
+            let items = ["no".uppercased(), "yes".uppercased()]
+            let itemsSegment = UISegmentedControl(items: items)
+            itemsSegment.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50)
+            itemsSegment.selectedSegmentIndex = 3
+            itemsSegment.layer.cornerRadius = 10.0
+            itemsSegment.addTarget(self, action: #selector(itemsValueChanged(sender:)) , for: .valueChanged)
+            
+            messageInputBar.topStackView.addArrangedSubview(itemsSegment)
+            
+            messageInputBar.topStackViewPadding.top = 20
+            messageInputBar.topStackViewPadding.left = 20
+            messageInputBar.topStackViewPadding.right = 20
+            messageInputBar.topStackViewPadding.bottom = 20
+
+            messageInputBar.backgroundColor = messageInputBar.backgroundView.backgroundColor
+            
+        }
+        
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
         return .bubbleTail(corner, .curved)
-        //        let configurationClosure = { (view: MessageContainerView) in}
-        //        return .custom(configurationClosure)
+    }
+    
+    @objc func itemsValueChanged(sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            messageKitViewModel.clearDataForCreateDefaultAppointment()
+        case 1:
+            setUpViewForReceiver(text: "Give me a second..")
+            messageKitViewModel.prepareAppointmentDataForCreateDefaultAppointment()
+        default:
+            print(" ")
+        }
+        
+        isConfirmState = false
+        messageInputBar.topStackView.arrangedSubviews.first?.removeFromSuperview()
+        messageInputBar.topStackViewPadding = .zero
+    }
+    
+    func confirmCreateAppointmentState(confirm:Bool){
+        isConfirmState = confirm
+    }
+    
+    @objc func confirmCreateAppointment(sender: UIButton!) {
+        
+        print("Confirm")
+    }
+    
+    @objc func cancelCreateAppointment(sender: UIButton!) {
+        
+        print("Cancel")
     }
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
@@ -475,7 +522,6 @@ extension MessageKitViewController: MessagesDisplayDelegate {
     //    }
     
     func snapshotOptionsForLocation(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> LocationMessageSnapshotOptions {
-        
         return LocationMessageSnapshotOptions()
     }
 }
@@ -513,16 +559,13 @@ extension MessageKitViewController: MessagesLayoutDelegate {
     }
     
     func footerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        
         return CGSize(width: messagesCollectionView.bounds.width, height: 10)
     }
-    
+
     // MARK: - Location Messages
-    
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 200
     }
-    
 }
 
 // MARK: - MessageCellDelegate
@@ -534,6 +577,7 @@ extension MessageKitViewController: MessageCellDelegate {
     }
     
     func didTapMessage(in cell: MessageCollectionViewCell) {
+
         print("Message tapped")
     }
     
@@ -544,7 +588,6 @@ extension MessageKitViewController: MessageCellDelegate {
     func didTapBottomLabel(in cell: MessageCollectionViewCell) {
         print("Bottom label tapped")
     }
-    
 }
 
 // MARK: - MessageLabelDelegate
@@ -566,12 +609,17 @@ extension MessageKitViewController: MessageLabelDelegate {
     func didSelectURL(_ url: URL) {
         print("URL Selected: \(url)")
     }
-    
 }
 
 // MARK: - MessageInputBarDelegate
 
 extension MessageKitViewController: MessageInputBarDelegate {
+    
+    func messageInputBar(_ inputBar: MessageInputBar, textViewTextDidChangeTo text: String) {
+    
+        isTyping = false
+        handleTyping()
+    }
     
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         
@@ -613,5 +661,3 @@ extension MessageKitViewController: MessageInputBarDelegate {
         messageKitViewModel.sendTextRequest(text: text)
     }
 }
-
-

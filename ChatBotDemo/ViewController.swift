@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         
         let storyBoard = UIStoryboard(name: "Main" , bundle: nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier : "MessageKitViewController") as! MessageKitViewController
-        self.navigationController?.present(viewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

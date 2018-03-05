@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		16398ECDB6972F823DAECA59 /* Pods_ChatBotDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0F089E66F004986DBFBE6A /* Pods_ChatBotDemo.framework */; };
+		1A02504D204D481F008C6DC2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A02504C204D481F008C6DC2 /* CalendarView.swift */; };
+		1A02504F204D484E008C6DC2 /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A02504E204D484E008C6DC2 /* CalendarView.xib */; };
+		1A025051204D4CA3008C6DC2 /* CustomDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A025050204D4CA3008C6DC2 /* CustomDateView.swift */; };
+		1A025053204D4CAB008C6DC2 /* CustomDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A025052204D4CAB008C6DC2 /* CustomDateView.xib */; };
 		1AA79DFB204816A600C2E310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79DFA204816A600C2E310 /* AppDelegate.swift */; };
 		1AA79DFD204816A600C2E310 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA79DFC204816A600C2E310 /* ViewController.swift */; };
 		1AA79E00204816A600C2E310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AA79DFE204816A600C2E310 /* Main.storyboard */; };
@@ -47,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A02504C204D481F008C6DC2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		1A02504E204D484E008C6DC2 /* CalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
+		1A025050204D4CA3008C6DC2 /* CustomDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateView.swift; sourceTree = "<group>"; };
+		1A025052204D4CAB008C6DC2 /* CustomDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomDateView.xib; sourceTree = "<group>"; };
 		1AA79DF7204816A600C2E310 /* ChatBotDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatBotDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AA79DFA204816A600C2E310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AA79DFC204816A600C2E310 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +130,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1A02504B204D47C0008C6DC2 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				1AA79E2A20481A3700C2E310 /* Message.swift */,
+				1AA79E2B20481A3700C2E310 /* SampleData.swift */,
+				1AA79E3420490CAE00C2E310 /* Settings+UserDefaults.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		1AA79DEE204816A600C2E310 = {
 			isa = PBXGroup;
 			children = (
@@ -149,10 +167,12 @@
 			children = (
 				1AA79DFA204816A600C2E310 /* AppDelegate.swift */,
 				1AA79DFC204816A600C2E310 /* ViewController.swift */,
+				1A02504C204D481F008C6DC2 /* CalendarView.swift */,
+				1A02504E204D484E008C6DC2 /* CalendarView.xib */,
+				1A025050204D4CA3008C6DC2 /* CustomDateView.swift */,
+				1A025052204D4CAB008C6DC2 /* CustomDateView.xib */,
 				1AA79E3A204921EC00C2E310 /* MessageKit */,
-				1AA79E2A20481A3700C2E310 /* Message.swift */,
-				1AA79E2B20481A3700C2E310 /* SampleData.swift */,
-				1AA79E3420490CAE00C2E310 /* Settings+UserDefaults.swift */,
+				1A02504B204D47C0008C6DC2 /* data */,
 				1AA79DFE204816A600C2E310 /* Main.storyboard */,
 				1AA79E01204816A600C2E310 /* Assets.xcassets */,
 				1AA79E03204816A600C2E310 /* LaunchScreen.storyboard */,
@@ -345,6 +365,8 @@
 			files = (
 				1AA79E05204816A600C2E310 /* LaunchScreen.storyboard in Resources */,
 				1AA79E02204816A600C2E310 /* Assets.xcassets in Resources */,
+				1A02504F204D484E008C6DC2 /* CalendarView.xib in Resources */,
+				1A025053204D4CAB008C6DC2 /* CustomDateView.xib in Resources */,
 				1AA79E00204816A600C2E310 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,12 +536,14 @@
 				1AA79E39204921BD00C2E310 /* MessageKitModel.swift in Sources */,
 				1AA79E37204921AF00C2E310 /* MessageKitViewModel.swift in Sources */,
 				1AA79DFB204816A600C2E310 /* AppDelegate.swift in Sources */,
+				1A02504D204D481F008C6DC2 /* CalendarView.swift in Sources */,
 				1AA79E402049242600C2E310 /* Results.swift in Sources */,
 				1AA79E29204819EC00C2E310 /* MessageKitViewController.swift in Sources */,
 				1AA79E302048FF6C00C2E310 /* UserObjects.swift in Sources */,
 				1AA79E2D20481A3700C2E310 /* SampleData.swift in Sources */,
 				1AA79E2C20481A3700C2E310 /* Message.swift in Sources */,
 				1AA79E332049090000C2E310 /* UserAccount.swift in Sources */,
+				1A025051204D4CA3008C6DC2 /* CustomDateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
